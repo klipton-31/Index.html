@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Meu Investimento</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f4f7fb;
+      color: #172033;
+    }
+
+    header {
+      background: #0757c9;
+      color: white;
+      padding: 25px 15px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 28px;
+    }
+
+    header p {
+      margin-top: 8px;
+    }
+
+    .container {
+      width: 94%;
+      max-width: 600px;
+      margin: 20px auto;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      margin-bottom: 18px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+      margin-bottom: 15px;
+      color: #0757c9;
+    }
+
+    .saldo {
+      font-size: 30px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .plano {
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+
+    .plano h3 {
+      margin-bottom: 8px;
+    }
+
+    .plano p {
+      margin: 5px 0;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-top: 12px;
+      margin-bottom: 6px;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #ccd2da;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 8px;
+      background: #0757c9;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: #06469f;
+    }
+
+    .aviso {
+      margin-top: 15px;
+      padding: 12px;
+      background: #fff4d6;
+      border-left: 4px solid #e0a400;
+      font-size: 14px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #777;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>💰 Meu Investimento</h1>
+  <p>Área de demonstração</p>
+</header>
+
+<div class="container">
+
+  <!-- SALDO -->
+  <div class="card">
+    <h2>📊 Meu saldo</h2>
+
+    <p>Saldo disponível</p>
+
+    <div class="saldo">
+      0,00 MZN
+    </div>
+
+    <p>Rendimento estimado: 0,00 MZN</p>
+  </div>
+
+
+  <!-- PLANOS -->
+  <div class="card">
+
+    <h2>💼 Planos</h2>
+
+    <div class="plano">
+      <h3>Plano Básico</h3>
+      <p>Valor: <strong>500 MZN</strong></p>
+      <p>Prazo: Demonstração</p>
+
+      <button onclick="selecionarPlano('Plano Básico')">
+        Selecionar
+      </button>
+    </div>
+
+
+    <div class="plano">
+      <h3>Plano Standard</h3>
+      <p>Valor: <strong>1.000 MZN</strong></p>
+      <p>Prazo: Demonstração</p>
+
+      <button onclick="selecionarPlano('Plano Standard')">
+        Selecionar
+      </button>
+    </div>
+
+
+    <div class="plano">
+      <h3>Plano Premium</h3>
+      <p>Valor: <strong>5.000 MZN</strong></p>
+      <p>Prazo: Demonstração</p>
+
+      <button onclick="selecionarPlano('Plano Premium')">
+        Selecionar
+      </button>
+    </div>
+
+  </div>
+
+
+  <!-- DADOS PARA RECEBER -->
+  <div class="card">
+
+    <h2>📱 Dados para receber</h2>
+
+    <label for="nome">
+      Nome completo
+    </label>
+
+    <input
+      type="text"
+      id="nome"
+      placeholder="Digite o seu nome"
+    >
+
+
+    <label for="metodo">
+      Método de pagamento
+    </label>
+
+    <select id="metodo">
+
+      <option value="">
+        Escolha o método
+      </option>
+
+      <option value="M-Pesa">
+        M-Pesa
+      </option>
+
+      <option value="e-Mola">
+        e-Mola
+      </option>
+
+    </select>
+
+
+    <label for="numero">
+      Número para receber
+    </label>
+
+    <input
+      type="tel"
+      id="numero"
+      placeholder="Ex.: 841234567"
+      maxlength="9"
+    >
+
+
+    <button onclick="guardarDados()">
+      Guardar dados
+    </button>
+
+
+    <div class="aviso">
+      ⚠️ Nunca coloque aqui o seu PIN, palavra-passe
+      ou código secreto de pagamento.
+    </div>
+
+  </div>
+
+
+  <!-- LEVANTAMENTO -->
+  <div class="card">
+
+    <h2>💸 Levantamento</h2>
+
+    <label for="valor">
+      Valor a levantar
+    </label>
+
+    <input
+      type="number"
+      id="valor"
+      placeholder="Digite o valor em MZN"
+      min="1"
+    >
+
+    <button onclick="solicitarLevantamento()">
+      Solicitar levantamento
+    </button>
+
+  </div>
+
+</div>
+
+
+<footer>
+  © 2026 Meu Investimento
+</footer>
+
+
+<script>
+
+  function selecionarPlano(plano) {
+
+    alert(
+      "Você selecionou: " + plano +
+      "\n\nEsta é uma demonstração."
+    );
+
+  }
+
+
+  function guardarDados() {
+
+    const nome =
+      document.getElementById("nome").value.trim();
+
+    const metodo =
+      document.getElementById("metodo").value;
+
+    const numero =
+      document.getElementById("numero").value.trim();
+
+
+    if (!nome || !metodo || !numero) {
+
+      alert(
+        "Por favor, preencha todos os campos."
+      );
+
+      return;
+    }
+
+
+    if (!/^[0-9]{9}$/.test(numero)) {
+
+      alert(
+        "Digite um número válido com 9 dígitos."
+      );
+
+      return;
+    }
+
+
+    alert(
+      "Dados preenchidos com sucesso!\n\n" +
+      "Nome: " + nome + "\n" +
+      "Método: " + metodo + "\n" +
+      "Número: " + numero
+    );
+
+  }
+
+
+  function solicitarLevantamento() {
+
+    const valor =
+      document.getElementById("valor").value;
+
+
+    if (!valor || valor <= 0) {
+
+      alert(
+        "Digite um valor válido."
+      );
+
+      return;
+    }
+
+
+    alert(
+      "Pedido de levantamento criado " +
+      "apenas para demonstração.\n\n" +
+      "Valor: " + valor + " MZN"
+    );
+
+  }
+
+</script>
+
+</body>
+</html>
